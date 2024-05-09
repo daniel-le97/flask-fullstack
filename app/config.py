@@ -1,11 +1,16 @@
 import os
+from dotenv import set_key, get_key
+
+if not get_key(os.getcwd() + '/.env', 'SECRET_KEY'):
+    import secrets
+    set_key(os.getcwd() + '/.env', 'SECRET_KEY', secrets.token_hex(32) )
 
 class Config:
     # Determine persistent path for storage (default to current directory)
     persistent_path = os.getenv("PERSISTENT_STORAGE_DIR", os.path.dirname(os.path.realpath(__file__)))
 
     # Flask app configuration
-    SECRET_KEY = os.environ.get('SECRET_KEY', 'you-will-never-guess')
+    SECRET_KEY = os.environ.get('SECRET_KEY')
     SQLALCHEMY_DATABASE_URI = f'sqlite:///{os.path.join(persistent_path, "sqlite.db")}'
     SQLALCHEMY_ECHO = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
