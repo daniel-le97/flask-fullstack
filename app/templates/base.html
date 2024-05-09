@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flask fullstack</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css" />
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/htmx.js"></script>
+
+    <style>
+      /* Outline container with blue border */
+      .container {
+        border: 1px solid blue;
+        padding: 10px; /* Add padding for visual clarity */
+      }
+
+      /* Outline rows with green border */
+      .row {
+        border: 1px solid green;
+        margin-bottom: 10px; /* Add margin for visual separation */
+      }
+
+      /* Outline columns with red border */
+      [class^="col-"] {
+        border: 1px solid red;
+        padding: 10px; /* Add padding for visual clarity */
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="{{ url_for('app.index') }}">Home</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('main.profile') }}">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('app.login') }}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('app.signup') }}">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('app.logout') }}">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="card">
+              <div class="card-body">{% block content %} {% endblock %}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
