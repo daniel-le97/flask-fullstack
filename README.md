@@ -2,6 +2,9 @@
 
 
 this is my first time using python
+i created this to see if i could learn python easily
+
+it is a very basic app, and does not aim to make the ui pretty
 
 ## stack
 - Flask
